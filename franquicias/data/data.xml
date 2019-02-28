@@ -1,0 +1,68 @@
+<odoo>
+  <data>
+    <record id = "franquicia1" model="franquicias.franquicias">
+      <field name="name">Telepizza</field>
+      <field name="propietario">Pablo Ruiz</field>
+    </record>
+
+    <record id = "franquicia2" model="franquicias.franquicias">
+      <field name="name">Burger King</field>
+      <field name="propietario">Raul Lopez</field>
+    </record>
+
+    <record id="tienda1" model="franquicias.tienda">
+      <field name = "propietario">Pablo</field>
+      <field name = "ubicacion">Madrid</field>
+      <field name = "franquicias" ref = "franquicia1"></field>
+    </record>
+
+    <record id="tienda2" model="franquicias.tienda">
+      <field name = "propietario">Luis</field>
+      <field name = "ubicacion">Logroño</field>
+      <field name = "franquicias" ref = "franquicia1"></field>
+    </record>
+
+    <record id="tienda3" model="franquicias.tienda">
+      <field name = "propietario">Gonzalo</field>
+      <field name = "ubicacion">Murcia</field>
+      <field name = "franquicias" ref = "franquicia2"></field>
+    </record>
+
+    <record id="empleado1" model="franquicias.empleado">
+      <field name = "name">Santiago</field>
+      <field name = "domicilio">Madrid</field>
+      <field name = "tienda" ref = "tienda1"></field>
+    </record>
+
+    <record id="empleado2" model="franquicias.empleado">
+      <field name = "name">Roberto</field>
+      <field name = "domicilio">Madrid</field>
+      <field name = "tienda" ref = "tienda1"></field>
+    </record>
+
+    <record id="venta1" model="franquicias.ventas">
+      <field name = "fecha_venta">19/08/19</field>
+      <field name = "producto">pizza mediana</field>
+      <field name = "precio">20</field>
+      <field name = "tienda" ref = "tienda1"></field>
+      <field name = "empleado" ref = "empleado1"></field>
+    </record>
+
+    <record id="venta2" model="franquicias.ventas">
+      <field name = "fecha_venta">20/08/19</field>
+      <field name = "producto">pizza grande</field>
+      <field name = "precio">35</field>
+      <field name = "tienda" ref = "tienda1"></field>
+      <field name = "empleado" ref = "empleado1"></field>
+    </record>
+
+    <record id="venta3" model="franquicias.ventas">
+      <field name = "fecha_venta">11/07/19</field>
+      <field name = "producto">Coca Cola</field>
+      <field name = "precio">3</field>
+      <field name = "tienda" ref = "tienda1"></field>
+      <field name = "empleado" ref = "empleado2"></field>
+    </record>
+
+  </data>
+</odoo>

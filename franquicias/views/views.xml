@@ -1,0 +1,131 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <!-- FRANQUICIAS -->
+    <record model="ir.ui.view" id="franquicias.franquicias">
+      <field name="name">Listado de franquicias</field>
+      <field name="model">franquicias.franquicias</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="id"/>
+          <field name="name"/>
+          <field name="propietario"/>
+          <field name="num_tiendas"/>
+        </tree>
+      </field>
+    </record>
+    <!-- TIENDA -->
+    <record model="ir.ui.view" id="franquicias.tienda">
+      <field name="name">Listado de tiendas</field>
+      <field name="model">franquicias.tienda</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="id"/>
+          <field name="propietario"/>
+          <field name="ubicacion"/>
+          <field name="ganancias_totales"/>
+          <field name="franquicia"/>
+        </tree>
+      </field>
+    </record>
+    <!-- EMPLEADO -->
+    <record model="ir.ui.view" id="franquicias.empleado">
+      <field name="name">Listado de empleados</field>
+      <field name="model">franquicias.empleado</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="id"/>
+          <field name="name"/>
+          <field name="domicilio"/>
+          <field name = "ventas_empleado"/>
+        </tree>
+      </field>
+    </record>
+    <!-- VENTAS -->
+    <record model="ir.ui.view" id="franquicias.ventas">
+      <field name="name">Listado de ventas</field>
+      <field name="model">franquicias.ventas</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="id"/>
+          <field name="fecha_venta"/>
+          <field name="producto"/>
+          <field name="precio"/>
+          <field name = "nombre_tienda"/>
+        </tree>
+      </field>
+    </record>
+    <!-- actions opening views on models -->
+    <!-- FRANQUICIAS -->
+    <record model="ir.actions.act_window" id="franquicias.franquicias_action_window">
+      <field name="name">Gestion de franquicias</field>
+      <field name="res_model">franquicias.franquicias</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <!-- TIENDA -->
+    <record model="ir.actions.act_window" id="franquicias.tienda_action_window">
+      <field name="name">Gestion de tiendas</field>
+      <field name="res_model">franquicias.tienda</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <!-- EMPLEADO -->
+    <record model="ir.actions.act_window" id="franquicias.empleado_action_window">
+      <field name="name">Gestion de empleados</field>
+      <field name="res_model">franquicias.empleado</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <!-- VENTAS -->
+    <record model="ir.actions.act_window" id="franquicias.ventas_action_window">
+      <field name="name">Gestion de ventas</field>
+      <field name="res_model">franquicias.ventas</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="franquicias.action_server">
+      <field name="name">franquicias server</field>
+      <field name="model_id" ref="model_franquicias_franquicias"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+
+    <menuitem name="franquicias" id="franquicias.menu_root"/>
+
+    <!-- menu categories -->
+    <!-- FRANQUICIAS -->
+    <menuitem name="Gestión de franquicias" id="franquicias.menu_franquicias" parent="franquicias.menu_root"/>
+    <!-- TIENDA -->
+    <menuitem name="Gestión de tiendas" id="franquicias.menu_tiendas" parent="franquicias.menu_root"/>
+    <!-- EMPLEADO -->
+    <menuitem name="Gestión de empleados" id="franquicias.menu_empleados" parent="franquicias.menu_root"/>
+    <!-- VENTAS -->
+    <menuitem name="Movimientos" id="franquicias.movimientos" parent="franquicias.menu_tiendas"/>
+
+
+    <!-- actions -->
+    <!-- ALUMNOS -->
+    <menuitem name="Listado_franquicias" id="franquicias.menu_franquicias_1" parent="franquicias.menu_franquicias"
+              action="franquicias.franquicias_action_window"/>
+    <!-- Tienda -->
+    <menuitem name="Listado_tiendas" id="franquicias.menu_tiendas_1" parent="franquicias.menu_tiendas"
+              action="franquicias.tienda_action_window"/>
+    <!-- Empleado -->
+    <menuitem name="Listado_empleados" id="franquicias.menu_empleados_1" parent="franquicias.menu_empleados"
+              action="franquicias.empleado_action_window"/>
+    <!-- ventas -->
+    <menuitem name="Listado_ventas" id="franquicias.movimientos_1" parent="franquicias.movimientos"
+              action="franquicias.ventas_action_window"/>
+
+
+  </data>
+</odoo>
